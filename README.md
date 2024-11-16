@@ -5,7 +5,6 @@ ShoppingYuk Application APK
 |:---------------------------------------------------:|:---------------------------------------------------:|:---------------------------------------------------:|
 |              Gambar 1: <br> Login Page              |              Gambar 2: <br> Home Page               |         Gambar 3: <br> Detail Product Page          |
 |  ![Gambar 4](./documentation/ShoppingYuk_SS_4.jpg)  |  ![Gambar 5](./documentation/ShoppingYuk_SS_5.jpg)  |  ![Gambar 6](./documentation/ShoppingYuk_SS_6.jpg)  |
-| :-------------------------------------------------: | :-------------------------------------------------: | :-------------------------------------------------: |
 |             Gambar 4: <br> Show Profile             |              Gambar 5: <br> Cart Page               |            Gambar 6: <br> Checkout Page             |
 
 ## Implementation
