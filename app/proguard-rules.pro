@@ -23,3 +23,16 @@
 -keep class com.algokelvin.shoppingyuk.** { *; }
 -keepclassmembers class com.algokelvin.shoppingyuk.** { *; }
 -keepnames class com.algokelvin.shoppingyuk.** { *; }
+
+# Suppress warnings about missing BouncyCastle, Conscrypt, and OpenJSSE classes
+-dontwarn org.bouncycastle.jsse.BCSSLParameters
+-dontwarn org.bouncycastle.jsse.BCSSLSocket
+-dontwarn org.bouncycastle.jsse.provider.BouncyCastleJsseProvider
+-dontwarn org.conscrypt.Conscrypt$Version
+-dontwarn org.conscrypt.Conscrypt
+-dontwarn org.conscrypt.ConscryptHostnameVerifier
+-dontwarn org.openjsse.javax.net.ssl.SSLParameters
+-dontwarn org.openjsse.javax.net.ssl.SSLSocket
+-dontwarn org.openjsse.net.ssl.OpenJSSE
+-dontwarn com.android.org.conscrypt.SSLParametersImpl
+-dontwarn org.apache.harmony.xnet.provider.jsse.SSLParametersImpl
