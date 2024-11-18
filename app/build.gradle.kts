@@ -23,7 +23,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -83,6 +83,15 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.androidx.security.crypto)
+
+    /*
+    Handle for Build APK with minifyEnabled true
+    Suppress warnings about missing BouncyCastle, Conscrypt, and OpenJSSE classes
+     */
+    implementation ("org.bouncycastle:bcprov-jdk15to18:1.76")
+    implementation ("org.bouncycastle:bctls-jdk15to18:1.76")
+    implementation ("org.conscrypt:conscrypt-android:2.5.2")
+    implementation ("org.openjsse:openjsse:1.1.11")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
