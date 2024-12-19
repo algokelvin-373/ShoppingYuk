@@ -2,9 +2,9 @@ package com.algokelvin.shoppingyuk.presentation.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.algokelvin.shoppingyuk.domain.usecase.DeleteProductInCartUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetCartByUserIdUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.UpdateCountProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.DeleteProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.GetCartByUserIdUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.UpdateCountProductInCartUseCase
 
 class CartViewModel(
     private val getCartByUserIdUseCase: GetCartByUserIdUseCase,

@@ -2,7 +2,7 @@ package com.algokelvin.shoppingyuk.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.algokelvin.shoppingyuk.domain.usecase.GetProfileFromDBUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
 
 class HomeViewModel(
     private val getProfileFromDBUseCase: GetProfileFromDBUseCase,
