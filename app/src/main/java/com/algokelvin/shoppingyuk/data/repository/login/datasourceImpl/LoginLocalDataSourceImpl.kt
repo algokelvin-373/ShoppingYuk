@@ -6,10 +6,14 @@ import com.algokelvin.shoppingyuk.data.repository.login.datasource.LoginLocalDat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginLocalDataSourceImpl(private val userDao: UserDao): LoginLocalDataSource {
     override suspend fun saveUserToDB(user: User) {
-        CoroutineScope(Dispatchers.IO).launch {
+        /*CoroutineScope(Dispatchers.IO).launch {
+            userDao.saveUser(user)
+        }*/
+        withContext(Dispatchers.IO) {
             userDao.saveUser(user)
         }
     }
