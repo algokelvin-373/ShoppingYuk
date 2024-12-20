@@ -1,5 +1,6 @@
 package com.algokelvin.shoppingyuk.data.repository.login
 
+import android.util.Log
 import com.algokelvin.shoppingyuk.data.api.ResponseResults
 import com.algokelvin.shoppingyuk.data.model.user.Login
 import com.algokelvin.shoppingyuk.data.model.user.Token
@@ -19,6 +20,12 @@ class LoginRepositoryImpl(
     override suspend fun getUser(login: Login): ResponseResults<User> = getProfileUser(login)
 
     override suspend fun getUserFromDB(id: Int): User = getProfileFromDB(id)
+
+    override suspend fun forgetUserAndOrPass(): String {
+        Log.i("Action_Me", "This is Logic for forget user and pass")
+        return "You Click Forget User Password"
+        // Connect to Data Source
+    }
 
     /*private suspend fun loginProcess(login: Login): ResponseResults<Token> {
         val token: Token?

@@ -46,6 +46,13 @@ class LoginActivity : AppCompatActivity() {
             binding.btnLogin.setOnClickListener {
                 initLogin()
             }
+
+            // Action Forget User or Pass
+            binding.txtForgetUserPass.setOnClickListener {
+                loginViewModel.forgetUserPass().observe(this) { message ->
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

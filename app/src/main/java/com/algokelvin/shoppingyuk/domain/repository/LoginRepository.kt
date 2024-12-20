@@ -10,4 +10,5 @@ interface LoginRepository {
     suspend fun login(login: Login): Resource<Token>
     suspend fun getUser(login: Login): ResponseResults<User>
     suspend fun getUserFromDB(id: Int): User
+    suspend fun forgetUserAndOrPass(): String
 }

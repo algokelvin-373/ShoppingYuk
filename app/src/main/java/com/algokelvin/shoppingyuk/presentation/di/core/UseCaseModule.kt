@@ -16,6 +16,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.login.GetProfileUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.login.LoginUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.cart.UpdateCountProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.login.ForgetUserPasswordUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -74,5 +75,10 @@ class UseCaseModule {
     @Provides
     fun provideCheckoutUseCase(cartRepository: CartRepository): CheckoutUseCase {
         return CheckoutUseCase(cartRepository)
+    }
+
+    @Provides
+    fun provideForgetUserPasswordUse(loginRepository: LoginRepository): ForgetUserPasswordUseCase {
+        return ForgetUserPasswordUseCase(loginRepository)
     }
 }

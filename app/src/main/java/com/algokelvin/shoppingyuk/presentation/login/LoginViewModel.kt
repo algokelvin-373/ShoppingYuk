@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.algokelvin.shoppingyuk.data.model.user.Login
 import com.algokelvin.shoppingyuk.data.model.user.Token
+import com.algokelvin.shoppingyuk.domain.usecase.login.ForgetUserPasswordUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.login.GetProfileUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.login.LoginUseCase
 import com.algokelvin.shoppingyuk.utils.Resource
@@ -11,6 +12,7 @@ import com.algokelvin.shoppingyuk.utils.Resource
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
     private val getProfileUseCase: GetProfileUseCase,
+    private val forgetUserPasswordUseCase: ForgetUserPasswordUseCase,
 ): ViewModel() {
 
 
@@ -33,5 +35,10 @@ class LoginViewModel(
     fun getProfile(login: Login) = liveData {
         val profile = getProfileUseCase.execute(login)
         emit(profile)
+    }
+
+    fun forgetUserPass() = liveData {
+        val forget = forgetUserPasswordUseCase.execute()
+        emit(forget)
     }
 }
