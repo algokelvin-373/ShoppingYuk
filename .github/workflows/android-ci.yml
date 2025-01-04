@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: Build Android
+    name: Build and Test APK
     runs-on: windows-latest
 
     steps:
@@ -27,13 +27,39 @@ jobs:
           java-version: 17
           distribution: 'zulu'
 
-      - name: Cache Gradle
+      - name: Cache Gradle Dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
-            ${{ runner.os }}-gradle-
+            gradle-${{ runner.os }}-
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Run Lint Check
+        run: ./gradlew lint
+
+      - name: Run Unit Tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Run UI Tests
+        run: ./gradlew connectedDebugAndroidTest
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+
+#      - name: Build Release APK
+#        run: ./gradlew assembleRelease
+#        env:
+#          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+#          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+#          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+#
+#      - name: Upload Release APK to Firebase
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1
+#        with:
+#          appId: ${{ secrets.FIREBASE_APP_ID }}
+#          token: ${{ secrets.FIREBASE_TOKEN }}
+#          groups: 'testers'
+#          file: app/build/outputs/apk/release/app-release.apk
