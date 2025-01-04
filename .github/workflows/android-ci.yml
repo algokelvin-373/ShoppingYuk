@@ -38,28 +38,20 @@ jobs:
             gradle-${{ runner.os }}-
 
       - name: Run Lint Check
+        id: lint
         run: ./gradlew lint
+        continue-on-error: false # Gagal jika lint error
 
       - name: Run Unit Tests
+        id: unit-tests
         run: ./gradlew testDebugUnitTest
+        continue-on-error: false # Gagal jika unit tests gagal
 
       - name: Run UI Tests
+        id: ui-tests
         run: ./gradlew connectedDebugAndroidTest
+        continue-on-error: false # Gagal jika UI tests gagal
 
       - name: Build Debug APK
+        if: success() # Hanya jalan jika semua langkah sebelumnya sukses
         run: ./gradlew assembleDebug
-
-#      - name: Build Release APK
-#        run: ./gradlew assembleRelease
-#        env:
-#          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-#          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-#          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-#
-#      - name: Upload Release APK to Firebase
-#        uses: wzieba/Firebase-Distribution-Github-Action@v1
-#        with:
-#          appId: ${{ secrets.FIREBASE_APP_ID }}
-#          token: ${{ secrets.FIREBASE_TOKEN }}
-#          groups: 'testers'
-#          file: app/build/outputs/apk/release/app-release.apk
