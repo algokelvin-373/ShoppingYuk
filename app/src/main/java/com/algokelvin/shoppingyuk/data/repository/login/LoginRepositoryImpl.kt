@@ -1,5 +1,6 @@
 package com.algokelvin.shoppingyuk.data.repository.login
 
+import android.util.Log
 import com.algokelvin.shoppingyuk.data.api.ResponseResults
 import com.algokelvin.shoppingyuk.data.model.user.Login
 import com.algokelvin.shoppingyuk.data.model.user.Token
@@ -7,18 +8,26 @@ import com.algokelvin.shoppingyuk.data.model.user.User
 import com.algokelvin.shoppingyuk.data.repository.login.datasource.LoginLocalDataSource
 import com.algokelvin.shoppingyuk.data.repository.login.datasource.LoginRemoteDataSource
 import com.algokelvin.shoppingyuk.domain.repository.LoginRepository
+import com.algokelvin.shoppingyuk.utils.Resource
+import com.algokelvin.shoppingyuk.utils.safeApiCall
 
 class LoginRepositoryImpl(
     private val remote: LoginRemoteDataSource,
     private val local: LoginLocalDataSource,
 ): LoginRepository {
-    override suspend fun login(login: Login): ResponseResults<Token> = loginProcess(login)
+    override suspend fun login(login: Login): Resource<Token> = loginProcess(login)
 
     override suspend fun getUser(login: Login): ResponseResults<User> = getProfileUser(login)
 
     override suspend fun getUserFromDB(id: Int): User = getProfileFromDB(id)
 
-    private suspend fun loginProcess(login: Login): ResponseResults<Token> {
+    override suspend fun forgetUserAndOrPass(): String {
+        Log.i("Action_Me", "This is Logic for forget user and pass")
+        return "You Click Forget User Password"
+        // Connect to Data Source
+    }
+
+    /*private suspend fun loginProcess(login: Login): ResponseResults<Token> {
         val token: Token?
 
         try {
@@ -37,6 +46,13 @@ class LoginRepositoryImpl(
             }
         } catch (e: Exception) {
             return ResponseResults(null, e.message)
+        }
+    }*/
+
+    // Implements Resource and SafeApiCall
+    private suspend fun loginProcess(login: Login): Resource<Token> {
+        return safeApiCall {
+            remote.login(login)
         }
     }
 
