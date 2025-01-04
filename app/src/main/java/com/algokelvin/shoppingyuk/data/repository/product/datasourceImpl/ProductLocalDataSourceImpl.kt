@@ -6,19 +6,26 @@ import com.algokelvin.shoppingyuk.data.repository.product.datasource.ProductLoca
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProductLocalDataSourceImpl(private val productDao: ProductDao): ProductLocalDataSource {
     override suspend fun getProductsFromDB(): List<Product> = productDao.getAllProducts()
     override suspend fun getProductByIdFromDB(id: Int): Product = productDao.getProductById(id)
 
     override suspend fun saveProductsToDB(products: List<Product>) {
-        CoroutineScope(Dispatchers.IO).launch {
+        /*CoroutineScope(Dispatchers.IO).launch {
+            productDao.saveProducts(products)
+        }*/
+        withContext(Dispatchers.IO) {
             productDao.saveProducts(products)
         }
     }
 
     override suspend fun clearAll() {
-        CoroutineScope(Dispatchers.IO).launch {
+        /*CoroutineScope(Dispatchers.IO).launch {
+            productDao.deleteAllProducts()
+        }*/
+        withContext(Dispatchers.IO) {
             productDao.deleteAllProducts()
         }
     }
