@@ -2,8 +2,8 @@ package com.algokelvin.shoppingyuk.presentation.productdetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.algokelvin.shoppingyuk.domain.usecase.AddProductToCartUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetProductDetailUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.productdetail.AddProductToCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.productdetail.GetProductDetailUseCase
 
 @Suppress("UNCHECKED_CAST")
 class ProductDetailViewModelFactory(

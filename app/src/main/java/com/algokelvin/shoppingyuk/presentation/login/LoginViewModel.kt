@@ -3,8 +3,8 @@ package com.algokelvin.shoppingyuk.presentation.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.algokelvin.shoppingyuk.data.model.user.Login
-import com.algokelvin.shoppingyuk.domain.usecase.GetProfileUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.LoginUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.login.GetProfileUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.login.LoginUseCase
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,

@@ -2,7 +2,7 @@ package com.algokelvin.shoppingyuk.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.algokelvin.shoppingyuk.domain.usecase.GetProfileFromDBUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
 
 @Suppress("UNCHECKED_CAST")
 class HomeViewModelFactory(
