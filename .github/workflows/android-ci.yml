@@ -3,55 +3,94 @@ name: Android CI
 on:
   push:
     branches:
-      - main
       - develop
+      - feature/workflows
+      - main
   pull_request:
     branches:
-      - main
       - develop
+      - feature/workflows
+      - main
 
 jobs:
-  build:
-    name: Build and Test APK
+  install_dependencies:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
 
-      - name: Setup JDK
-        uses: actions/setup-java@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          java-version: 17
           distribution: 'zulu'
+          java-version: '17'
 
-      - name: Cache Gradle Dependencies
-        uses: actions/cache@v3
+      - name: Install dependencies (Gradle)
+        run: ./gradlew dependencies
+
+  lint:
+    runs-on: windows-latest
+    needs: install_dependencies
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            gradle-${{ runner.os }}-
+          distribution: 'zulu'
+          java-version: '17'
 
       - name: Run Lint Check
-        id: lint
         run: ./gradlew lint
-        continue-on-error: false # Gagal jika lint error
+
+  run_tests:
+    runs-on: windows-latest
+    needs: install_dependencies
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install dependencies (Gradle)
+        run: ./gradlew dependencies
 
       - name: Run Unit Tests
-        id: unit-tests
         run: ./gradlew testDebugUnitTest
-        continue-on-error: false # Gagal jika unit tests gagal
 
       - name: Run UI Tests
-        id: ui-tests
         run: ./gradlew connectedDebugAndroidTest
-        continue-on-error: false # Gagal jika UI tests gagal
+
+  build_apk:
+    runs-on: windows-latest
+    needs: [install_dependencies, lint, run_tests]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Install dependencies (Gradle)
+        run: ./gradlew dependencies
 
       - name: Build Debug APK
-        if: success() # Hanya jalan jika semua langkah sebelumnya sukses
         run: ./gradlew assembleDebug
+
+      - name: Upload Debug APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-apk-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
