@@ -1,4 +1,4 @@
-package com.algokelvin.shoppingyuk.domain.usecase
+package com.algokelvin.shoppingyuk.domain.usecase.checkout
 
 import com.algokelvin.shoppingyuk.domain.repository.CartRepository
 

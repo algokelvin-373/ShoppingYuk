@@ -5,17 +5,18 @@ import com.algokelvin.shoppingyuk.domain.repository.LoginRepository
 import com.algokelvin.shoppingyuk.domain.repository.ProductCategoryRepository
 import com.algokelvin.shoppingyuk.domain.repository.ProductDetailRepository
 import com.algokelvin.shoppingyuk.domain.repository.ProductRepository
-import com.algokelvin.shoppingyuk.domain.usecase.AddProductToCartUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.CheckoutUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.DeleteProductInCartUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetCartByUserIdUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetProductDetailUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetProductsCategoryUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetProductsUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetProfileFromDBUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetProfileUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.LoginUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.UpdateCountProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.productdetail.AddProductToCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.checkout.CheckoutUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.DeleteProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.GetCartByUserIdUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.productdetail.GetProductDetailUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.product.GetProductsCategoryUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.product.GetProductsUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.login.GetProfileUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.login.LoginUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.UpdateCountProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.login.ForgetUserPasswordUseCase
 import dagger.Module
 import dagger.Provides
 
@@ -74,5 +75,10 @@ class UseCaseModule {
     @Provides
     fun provideCheckoutUseCase(cartRepository: CartRepository): CheckoutUseCase {
         return CheckoutUseCase(cartRepository)
+    }
+
+    @Provides
+    fun provideForgetUserPasswordUse(loginRepository: LoginRepository): ForgetUserPasswordUseCase {
+        return ForgetUserPasswordUseCase(loginRepository)
     }
 }

@@ -1,8 +1,8 @@
 package com.algokelvin.shoppingyuk.presentation.di.cart
 
-import com.algokelvin.shoppingyuk.domain.usecase.DeleteProductInCartUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.GetCartByUserIdUseCase
-import com.algokelvin.shoppingyuk.domain.usecase.UpdateCountProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.DeleteProductInCartUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.GetCartByUserIdUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.cart.UpdateCountProductInCartUseCase
 import com.algokelvin.shoppingyuk.presentation.cart.CartViewModelFactory
 import dagger.Module
 import dagger.Provides
