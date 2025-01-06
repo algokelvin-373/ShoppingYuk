@@ -1,6 +1,6 @@
 package com.algokelvin.shoppingyuk.presentation.di.home
 
-import com.algokelvin.shoppingyuk.domain.usecase.GetProfileFromDBUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
 import com.algokelvin.shoppingyuk.presentation.home.HomeViewModelFactory
 import dagger.Module
 import dagger.Provides

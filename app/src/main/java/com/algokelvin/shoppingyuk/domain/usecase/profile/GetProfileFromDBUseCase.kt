@@ -1,4 +1,4 @@
-package com.algokelvin.shoppingyuk.domain.usecase
+package com.algokelvin.shoppingyuk.domain.usecase.profile
 
 import com.algokelvin.shoppingyuk.data.model.user.User
 import com.algokelvin.shoppingyuk.domain.repository.LoginRepository
