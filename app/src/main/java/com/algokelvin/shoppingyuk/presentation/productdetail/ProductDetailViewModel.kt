@@ -9,7 +9,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.productdetail.GetProductDetailU
 class ProductDetailViewModel(
     private val getProductDetailUseCase: GetProductDetailUseCase,
     private val addProductToCartUseCase: AddProductToCartUseCase,
-): ViewModel() {
+) : ViewModel() {
 
     fun getProductDetail(id: String) = liveData {
         val productDetail = getProductDetailUseCase.execute(id)

@@ -14,7 +14,7 @@ import com.algokelvin.shoppingyuk.utils.safeApiCall
 class LoginRepositoryImpl(
     private val remote: LoginRemoteDataSource,
     private val local: LoginLocalDataSource,
-): LoginRepository {
+) : LoginRepository {
     override suspend fun login(login: Login): Resource<Token> = loginProcess(login)
 
     override suspend fun getUser(login: Login): ResponseResults<User> = getProfileUser(login)
@@ -64,7 +64,8 @@ class LoginRepositoryImpl(
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null) {
-                    user = body.find { it.username == login.username && it.password == login.password }
+                    user =
+                        body.find { it.username == login.username && it.password == login.password }
                     user?.let { saveProfile(it) }
                     return ResponseResults(user)
                 } else {

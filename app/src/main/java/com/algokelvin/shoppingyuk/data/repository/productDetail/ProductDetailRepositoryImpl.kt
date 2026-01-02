@@ -6,7 +6,7 @@ import com.algokelvin.shoppingyuk.domain.repository.ProductDetailRepository
 
 class ProductDetailRepositoryImpl(
     private val remote: ProductDetailRemoteDataSource,
-): ProductDetailRepository {
+) : ProductDetailRepository {
 
     override suspend fun getProductDetail(id: String): Product = getProductDetailFromAPI(id)
 

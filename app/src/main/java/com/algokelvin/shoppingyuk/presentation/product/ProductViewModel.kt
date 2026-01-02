@@ -6,7 +6,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.product.GetProductsUseCase
 
 class ProductViewModel(
     private val getProductsUseCase: GetProductsUseCase,
-): ViewModel() {
+) : ViewModel() {
     fun getProducts() = liveData {
         val productList = getProductsUseCase.execute()
         emit(productList)

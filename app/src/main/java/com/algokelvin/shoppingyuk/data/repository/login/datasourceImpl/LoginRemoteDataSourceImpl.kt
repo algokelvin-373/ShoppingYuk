@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class LoginRemoteDataSourceImpl(
     private val productApiService: ProductApiService
-): LoginRemoteDataSource {
+) : LoginRemoteDataSource {
     override suspend fun login(login: Login): Response<Token> = productApiService.login(login)
     override suspend fun getAllUser(): Response<ArrayList<User>> = productApiService.getAllUsers()
 }

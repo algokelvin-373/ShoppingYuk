@@ -17,7 +17,7 @@ data class NamePerson(
     @SerializedName("lastname")
     @ColumnInfo("lastname")
     val lastName: String,
-): Parcelable
+) : Parcelable
 
 @Entity(tableName = "users_data")
 @Parcelize
@@ -45,4 +45,4 @@ data class User(
     @SerializedName("phone")
     @ColumnInfo("user_phone")
     val phone: String,
-): Parcelable
+) : Parcelable

@@ -26,7 +26,11 @@ class ProductFragment : Fragment(), OnClickItemProduct {
     private lateinit var productViewModel: ProductViewModel
     private lateinit var adapter: ProductAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_product, container, false)
 
         (activity?.application as Injector).createMovieSubComponent()
@@ -80,14 +84,14 @@ class ProductFragment : Fragment(), OnClickItemProduct {
         })*//*
     }*/
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         binding.productRecyclerView.layoutManager = GridLayoutManager(context, 2)
         adapter = ProductAdapter(this)
         binding.productRecyclerView.adapter = adapter
         displayPopularMovies()
     }
 
-    private fun displayPopularMovies(){
+    private fun displayPopularMovies() {
         binding.productProgressBar.visibility = View.VISIBLE
         val responseLiveData = productViewModel.getProducts()
         responseLiveData.observe(viewLifecycleOwner) {
@@ -95,9 +99,9 @@ class ProductFragment : Fragment(), OnClickItemProduct {
                 adapter.setList(it)
                 adapter.notifyDataSetChanged()
                 binding.productProgressBar.visibility = View.GONE
-            }else{
+            } else {
                 binding.productProgressBar.visibility = View.GONE
-                Toast.makeText(context,"No data available", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "No data available", Toast.LENGTH_LONG).show()
             }
         }
     }

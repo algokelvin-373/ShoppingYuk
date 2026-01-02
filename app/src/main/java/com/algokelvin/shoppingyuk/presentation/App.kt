@@ -16,8 +16,8 @@ import com.algokelvin.shoppingyuk.presentation.di.product.ProductCategorySubComp
 import com.algokelvin.shoppingyuk.presentation.di.product.ProductDetailSubComponent
 import com.algokelvin.shoppingyuk.presentation.di.product.ProductSubComponent
 
-class App: Application(), Injector {
-    private lateinit var appComponent:AppComponent
+class App : Application(), Injector {
+    private lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()

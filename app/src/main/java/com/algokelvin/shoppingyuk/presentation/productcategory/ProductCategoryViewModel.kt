@@ -6,7 +6,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.product.GetProductsCategoryUseC
 
 class ProductCategoryViewModel(
     private val getProductsCategoryUseCase: GetProductsCategoryUseCase,
-): ViewModel() {
+) : ViewModel() {
 
     fun getProductsSortByCategory() = liveData {
         val productsCategory = getProductsCategoryUseCase.execute()

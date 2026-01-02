@@ -13,17 +13,17 @@ import com.bumptech.glide.Glide
 
 class ProductAdapter(
     private val onClickItemProduct: OnClickItemProduct
-):RecyclerView.Adapter<MyViewHolder>() {
+) : RecyclerView.Adapter<MyViewHolder>() {
     private val productList = ArrayList<Product>()
 
-    fun setList(products:List<Product>){
-         productList.clear()
-         productList.addAll(products)
+    fun setList(products: List<Product>) {
+        productList.clear()
+        productList.addAll(products)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding : ItemProductLayoutBinding = DataBindingUtil.inflate(
+        val binding: ItemProductLayoutBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.item_product_layout,
             parent,
@@ -37,28 +37,28 @@ class ProductAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       holder.bind(productList[position])
+        holder.bind(productList[position])
     }
 }
-
 
 
 class MyViewHolder(
     private val binding: ItemProductLayoutBinding,
     private val onClickItemProduct: OnClickItemProduct,
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
-   fun bind(product: Product){
+    fun bind(product: Product) {
         binding.titleProduct.text = product.title
         binding.categoryProduct.text = product.category
         binding.priceProduct.text = product.price.toString()
         binding.rateProduct.text = product.rating?.rate.toString()
-        binding.countProduct.text = itemView.context.getString(R.string.item_sold, product.rating?.count.toString())
+        binding.countProduct.text =
+            itemView.context.getString(R.string.item_sold, product.rating?.count.toString())
         Glide.with(binding.imageProduct.context)
             .load(product.image)
             .into(binding.imageProduct)
-       binding.cardView.setOnClickListener {
-           onClickItemProduct.onClickItemProduct(product)
-       }
-   }
+        binding.cardView.setOnClickListener {
+            onClickItemProduct.onClickItemProduct(product)
+        }
+    }
 }

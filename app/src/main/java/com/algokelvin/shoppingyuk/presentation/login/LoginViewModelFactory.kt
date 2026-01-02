@@ -11,7 +11,7 @@ class LoginViewModelFactory(
     private val loginUseCase: LoginUseCase,
     private val getProfileUseCase: GetProfileUseCase,
     private val forgetUserPasswordUseCase: ForgetUserPasswordUseCase,
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return LoginViewModel(loginUseCase, getProfileUseCase, forgetUserPasswordUseCase) as T
     }

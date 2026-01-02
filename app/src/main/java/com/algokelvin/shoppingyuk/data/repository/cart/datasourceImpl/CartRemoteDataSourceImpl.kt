@@ -7,6 +7,7 @@ import retrofit2.Response
 
 class CartRemoteDataSourceImpl(
     private val service: ProductApiService,
-): CartRemoteDataSource {
-    override suspend fun getCartByUserid(id: String): Response<ArrayList<Cart>> = service.getCartByIdUser(id)
+) : CartRemoteDataSource {
+    override suspend fun getCartByUserid(id: String): Response<ArrayList<Cart>> =
+        service.getCartByIdUser(id)
 }

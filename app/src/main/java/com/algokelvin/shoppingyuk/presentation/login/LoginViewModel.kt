@@ -3,7 +3,6 @@ package com.algokelvin.shoppingyuk.presentation.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.algokelvin.shoppingyuk.data.model.user.Login
-import com.algokelvin.shoppingyuk.data.model.user.Token
 import com.algokelvin.shoppingyuk.domain.usecase.login.ForgetUserPasswordUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.login.GetProfileUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.login.LoginUseCase
@@ -13,8 +12,7 @@ class LoginViewModel(
     private val loginUseCase: LoginUseCase,
     private val getProfileUseCase: GetProfileUseCase,
     private val forgetUserPasswordUseCase: ForgetUserPasswordUseCase,
-): ViewModel() {
-
+) : ViewModel() {
 
 
     /*fun login(login: Login) = liveData {
@@ -32,6 +30,7 @@ class LoginViewModel(
             emit(Resource.Error("Network call failed ${e.message}"))
         }
     }
+
     fun getProfile(login: Login) = liveData {
         val profile = getProfileUseCase.execute(login)
         emit(profile)

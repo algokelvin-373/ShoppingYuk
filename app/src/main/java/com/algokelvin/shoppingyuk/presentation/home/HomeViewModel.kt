@@ -6,7 +6,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
 
 class HomeViewModel(
     private val getProfileFromDBUseCase: GetProfileFromDBUseCase,
-): ViewModel() {
+) : ViewModel() {
     fun getProfileFromDB(id: Int) = liveData {
         val profileUser = getProfileFromDBUseCase.execute(id)
         emit(profileUser)

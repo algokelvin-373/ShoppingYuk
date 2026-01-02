@@ -13,17 +13,17 @@ import com.bumptech.glide.Glide
 
 class CartAdapter(
     private val onClickItemCart: OnClickItemCart
-):RecyclerView.Adapter<CartViewHolder>() {
+) : RecyclerView.Adapter<CartViewHolder>() {
     private val cartList = ArrayList<CartDB>()
 
-    fun setList(cart:List<CartDB>){
-         cartList.clear()
-         cartList.addAll(cart)
+    fun setList(cart: List<CartDB>) {
+        cartList.clear()
+        cartList.addAll(cart)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding : ItemCartLayoutBinding = DataBindingUtil.inflate(
+        val binding: ItemCartLayoutBinding = DataBindingUtil.inflate(
             layoutInflater,
             R.layout.item_cart_layout,
             parent,
@@ -37,32 +37,31 @@ class CartAdapter(
     }
 
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
-       holder.bind(cartList[position])
+        holder.bind(cartList[position])
     }
 }
-
 
 
 class CartViewHolder(
     private val binding: ItemCartLayoutBinding,
     private val onClickItemCart: OnClickItemCart,
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
-   fun bind(cartDB: CartDB){
-       binding.nameCart.text = cartDB.productTitle
-       binding.itemCart.text = cartDB.count.toString()
-       Glide.with(binding.imgCart.context)
-           .load(cartDB.productImage)
-           .into(binding.imgCart)
+    fun bind(cartDB: CartDB) {
+        binding.nameCart.text = cartDB.productTitle
+        binding.itemCart.text = cartDB.count.toString()
+        Glide.with(binding.imgCart.context)
+            .load(cartDB.productImage)
+            .into(binding.imgCart)
 
-       binding.imgIncrease.setOnClickListener {
-           onClickItemCart.onClickIncrease(binding, cartDB)
-       }
-       binding.imgDecrease.setOnClickListener {
-           onClickItemCart.onClickDecrease(binding, cartDB)
-       }
-       binding.imgDeleteItem.setOnClickListener {
-           onClickItemCart.onClickDelete(cartDB)
-       }
-   }
+        binding.imgIncrease.setOnClickListener {
+            onClickItemCart.onClickIncrease(binding, cartDB)
+        }
+        binding.imgDecrease.setOnClickListener {
+            onClickItemCart.onClickDecrease(binding, cartDB)
+        }
+        binding.imgDeleteItem.setOnClickListener {
+            onClickItemCart.onClickDelete(cartDB)
+        }
+    }
 }

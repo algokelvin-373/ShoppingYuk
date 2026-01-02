@@ -7,7 +7,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.product.GetProductsUseCase
 @Suppress("UNCHECKED_CAST")
 class ProductViewModelFactory(
     private val getProductsUseCase: GetProductsUseCase,
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ProductViewModel(getProductsUseCase) as T
     }
