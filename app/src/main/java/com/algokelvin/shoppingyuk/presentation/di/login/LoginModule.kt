@@ -15,5 +15,6 @@ class LoginModule {
         loginUseCase: LoginUseCase,
         getProfileUseCase: GetProfileUseCase,
         forgetUserPasswordUseCase: ForgetUserPasswordUseCase,
-    ): LoginViewModelFactory = LoginViewModelFactory(loginUseCase, getProfileUseCase, forgetUserPasswordUseCase)
+    ): LoginViewModelFactory =
+        LoginViewModelFactory(loginUseCase, getProfileUseCase, forgetUserPasswordUseCase)
 }

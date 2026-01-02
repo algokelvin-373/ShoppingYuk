@@ -2,17 +2,18 @@ package com.algokelvin.shoppingyuk.presentation.checkout
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.algokelvin.shoppingyuk.domain.usecase.checkout.CheckoutUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.cart.GetCartByUserIdUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.checkout.CheckoutUseCase
 
 class CheckoutViewModel(
     private val getCartByUserIdUseCase: GetCartByUserIdUseCase,
     private val checkoutUseCase: CheckoutUseCase,
-): ViewModel() {
+) : ViewModel() {
     fun getCartByUserId(userId: Int) = liveData {
         val listCart = getCartByUserIdUseCase.execute(userId)
         emit(listCart)
     }
+
     fun confirmCheckout(userId: Int) = liveData {
         val statusConfirm = checkoutUseCase.execute(userId)
         emit(statusConfirm)

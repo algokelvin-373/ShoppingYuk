@@ -42,7 +42,8 @@ class ProductDetailActivity : AppCompatActivity() {
                     .into(binding.imageProduct)
                 binding.nameProduct.text = product.title
                 binding.categoryProduct.text = product.category
-                binding.priceProduct.text = getString(R.string.total_all_price, product.price.toString())
+                binding.priceProduct.text =
+                    getString(R.string.total_all_price, product.price.toString())
                 binding.descriptionProduct.text = product.description
                 addToCart(product)
             }

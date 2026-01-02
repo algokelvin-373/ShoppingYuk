@@ -9,7 +9,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.productdetail.GetProductDetailU
 class ProductDetailViewModelFactory(
     private val getProductDetailUseCase: GetProductDetailUseCase,
     private val addProductToCartUseCase: AddProductToCartUseCase,
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ProductDetailViewModel(
             getProductDetailUseCase,

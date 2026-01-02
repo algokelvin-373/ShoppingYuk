@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHome2Binding
     private lateinit var homeViewModel: HomeViewModel
 
-    private var profileId : Int? = 0
+    private var profileId: Int? = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +58,7 @@ class HomeActivity : AppCompatActivity() {
         binding.viewPager.adapter = adapter
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = when(position) {
+            tab.text = when (position) {
                 0 -> "Product"
                 1 -> "Category"
                 else -> null

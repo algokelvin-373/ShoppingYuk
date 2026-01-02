@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.passwordData.text.toString()
         val login = Login(username, password)
         loginViewModel.login(login).observe(this) { resource ->
-            when(resource) {
+            when (resource) {
                 is Resource.Loading -> showLoadingLoginFlow()
                 is Resource.Success -> resource.data?.data?.let { loginFlow(it, login) }
                 is Resource.Error -> getMessageErrorLoginFlow(resource.message.toString())

@@ -27,8 +27,13 @@ class ProductCategoryFragment : Fragment(), OnClickItemProduct {
     private lateinit var productCategoryViewModel: ProductCategoryViewModel
     private lateinit var adapter: ProductAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.activity_product_category, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.activity_product_category, container, false)
 
         (activity?.application as Injector).createProductCategorySubComponent()
             .inject(this)
@@ -68,9 +73,9 @@ class ProductCategoryFragment : Fragment(), OnClickItemProduct {
                 adapter.setList(it)
                 adapter.notifyDataSetChanged()
                 binding.productProgressBar.visibility = View.GONE
-            }else{
+            } else {
                 binding.productProgressBar.visibility = View.GONE
-                Toast.makeText(context,"No data available", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "No data available", Toast.LENGTH_LONG).show()
             }
         }
     }

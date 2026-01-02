@@ -3,14 +3,12 @@ package com.algokelvin.shoppingyuk.data.repository.cart.datasourceImpl
 import com.algokelvin.shoppingyuk.data.db.CartDao
 import com.algokelvin.shoppingyuk.data.model.cart.CartDB
 import com.algokelvin.shoppingyuk.data.repository.cart.datasource.CartLocalDataSource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class CartLocalDataSourceImpl(
     private val cartDao: CartDao,
-): CartLocalDataSource {
+) : CartLocalDataSource {
 
     override suspend fun getCart(userId: Int): List<CartDB> = cartDao.getCart(userId)
 

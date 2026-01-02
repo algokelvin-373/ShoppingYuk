@@ -10,9 +10,9 @@ class ProductRepositoryImpl(
     private val remote: ProductRemoteDataSource,
     private val local: ProductLocalDataSource,
     private val cache: ProductCacheDataSource,
-): ProductRepository {
+) : ProductRepository {
 
-    override suspend fun getProducts(): List<Product> =  getProductsFromCache()
+    override suspend fun getProducts(): List<Product> = getProductsFromCache()
 
     override suspend fun updateProducts(): List<Product> {
         val newListOfProducts = getProductsFromAPI()

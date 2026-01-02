@@ -7,10 +7,11 @@ import com.algokelvin.shoppingyuk.domain.repository.CartRepository
 
 class CartRepositoryImpl(
     private val localCart: CartLocalDataSource,
-): CartRepository {
+) : CartRepository {
     override suspend fun addProductInCart(cartDB: CartDB): String = addProductInCartDB(cartDB)
 
-    override suspend fun getCartByUserId(userId: Int): ResponseResults<List<CartDB>> = getCartInDB(userId)
+    override suspend fun getCartByUserId(userId: Int): ResponseResults<List<CartDB>> =
+        getCartInDB(userId)
 
     override suspend fun updateCountProductInCart(
         userId: Int,

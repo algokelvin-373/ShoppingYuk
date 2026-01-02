@@ -6,7 +6,7 @@ import com.algokelvin.shoppingyuk.domain.repository.ProductCategoryRepository
 
 class ProductCategoryRepositoryImpl(
     private val remote: ProductCategoryRemoteDataSource
-): ProductCategoryRepository {
+) : ProductCategoryRepository {
 
     override suspend fun getProductsSortByCategory(): List<Product> = getProductsFromAPI()
 

@@ -2,14 +2,14 @@ package com.algokelvin.shoppingyuk.presentation.checkout
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.algokelvin.shoppingyuk.domain.usecase.checkout.CheckoutUseCase
 import com.algokelvin.shoppingyuk.domain.usecase.cart.GetCartByUserIdUseCase
+import com.algokelvin.shoppingyuk.domain.usecase.checkout.CheckoutUseCase
 
 @Suppress("UNCHECKED_CAST")
 class CheckoutViewModelFactory(
     private val getCartByUserIdUseCase: GetCartByUserIdUseCase,
     private val checkoutUseCase: CheckoutUseCase,
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return CheckoutViewModel(
             getCartByUserIdUseCase,

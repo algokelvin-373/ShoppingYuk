@@ -12,15 +12,17 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(subcomponents = [
-    ProductSubComponent::class,
-    ProductDetailSubComponent::class,
-    LoginSubComponent::class,
-    ProductCategorySubComponent::class,
-    HomeSubComponent::class,
-    CartSubComponent::class,
-    CheckoutSubComponent::class,
-])
+@Module(
+    subcomponents = [
+        ProductSubComponent::class,
+        ProductDetailSubComponent::class,
+        LoginSubComponent::class,
+        ProductCategorySubComponent::class,
+        HomeSubComponent::class,
+        CartSubComponent::class,
+        CheckoutSubComponent::class,
+    ]
+)
 class AppModule(private val context: Context) {
     @Singleton
     @Provides

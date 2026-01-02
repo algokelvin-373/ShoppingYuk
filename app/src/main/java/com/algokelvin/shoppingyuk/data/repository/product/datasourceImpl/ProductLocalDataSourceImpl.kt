@@ -3,12 +3,10 @@ package com.algokelvin.shoppingyuk.data.repository.product.datasourceImpl
 import com.algokelvin.shoppingyuk.data.db.ProductDao
 import com.algokelvin.shoppingyuk.data.model.product.Product
 import com.algokelvin.shoppingyuk.data.repository.product.datasource.ProductLocalDataSource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ProductLocalDataSourceImpl(private val productDao: ProductDao): ProductLocalDataSource {
+class ProductLocalDataSourceImpl(private val productDao: ProductDao) : ProductLocalDataSource {
     override suspend fun getProductsFromDB(): List<Product> = productDao.getAllProducts()
     override suspend fun getProductByIdFromDB(id: Int): Product = productDao.getProductById(id)
 

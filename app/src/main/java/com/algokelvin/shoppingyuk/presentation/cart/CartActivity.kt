@@ -108,7 +108,7 @@ class CartActivity : AppCompatActivity(), OnClickItemCart {
     }
 
     private fun deleteProductInCart(userId: Int, productId: Int) {
-        cartViewModel.deleteProduct(userId, productId). observe(this) {
+        cartViewModel.deleteProduct(userId, productId).observe(this) {
             Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
         }
     }

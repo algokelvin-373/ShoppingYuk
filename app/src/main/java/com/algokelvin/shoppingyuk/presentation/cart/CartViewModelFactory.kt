@@ -11,7 +11,7 @@ class CartViewModelFactory(
     private val getCartByUserIdUseCase: GetCartByUserIdUseCase,
     private val updateCountProductInCartUseCase: UpdateCountProductInCartUseCase,
     private val deleteProductInCartUseCase: DeleteProductInCartUseCase,
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return CartViewModel(
             getCartByUserIdUseCase,

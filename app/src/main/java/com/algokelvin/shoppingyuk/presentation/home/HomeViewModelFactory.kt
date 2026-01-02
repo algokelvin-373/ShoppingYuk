@@ -7,7 +7,7 @@ import com.algokelvin.shoppingyuk.domain.usecase.profile.GetProfileFromDBUseCase
 @Suppress("UNCHECKED_CAST")
 class HomeViewModelFactory(
     private val getProfileFromDBUseCase: GetProfileFromDBUseCase,
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return HomeViewModel(getProfileFromDBUseCase) as T
     }
